@@ -10,10 +10,10 @@
 #'
 #' @author Zak Varty
 #'
-#' @param n 	number of random variates to generate.
-#' @param scale vector of scale parameters, $\sigma > 0$.
-#' @param shape vector of shape parameters, $\xi \in \mathbb{R}$.
-#' @param shift  vector of threshold parameters, $\mu \in \mathbb{R}$.
+#' @param n 	Number of random variates to generate.
+#' @param scale Vector of scale parameters, sigma > 0.
+#' @param shape Vector of shape parameters, xi in R.
+#' @param shift  Vector of threshold parameters, mu in R.
 #' @return Vector of sampled values from generalised Pareto distribution.
 #'
 #' @examples
