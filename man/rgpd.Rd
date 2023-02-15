@@ -27,6 +27,9 @@ These functions provide information about the generalised Pareto distribution:
 \code{qgpd} gives the quantile function,
 \code{rgpd} generates random variates.
 }
+\note{
+Setting xi < 1e-10 draws from an exponential distribution. This is equivalent to \code{rexp()} but the seed is not handled in the same way.
+}
 \examples{
 rgpd(n = 5, scale = 1, shape = 0, shift = 0)
 

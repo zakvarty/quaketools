@@ -23,6 +23,8 @@
 #' rgpd(n = 5, scale = 1, shape = 0.1 * 1:5, shift = 0)
 #' rgpd(n = 5, scale = 1, shape = 0, shift = 1:5)
 #'
+#' @note Setting xi < 1e-10 draws from an exponential distribution. This is equivalent to `rexp()` but the seed is not handled in the same way.
+#'
 #' @export
 rgpd <- function(n, scale = 1, shape = 0, shift = 0){
 
@@ -43,18 +45,16 @@ rgpd <- function(n, scale = 1, shape = 0, shift = 0){
   if ((length(shift) == 1) & (n > 1)) { shift <- rep(shift, n) }
 
   # Simulate sample
-  sample <- shift + (scale / shape) * ((1 - stats::runif(n))^(-shape) - 1)
+  U <- stats::runif(n)
+  sample <- shift + (scale / shape) * ((1 - U)^(-shape) - 1)
 
   # Check for and correct any values from exponential distribution (xi ≈ 0)
   which_shape_near_zero <- which(abs(shape) < TOLERANCE)
   n_shape_near_zero <- length(which_shape_near_zero)
 
   if (n_shape_near_zero > 0) {
-    # correct the sampled values where xi ≈ 0
-    exp_rates <- 1 / scale[which_shape_near_zero]
-    exp_values <- stats::rexp(n_shape_near_zero, rate = exp_rates)
-    shift_values <- shift[which_shape_near_zero]
-    sample[which_shape_near_zero] <- shift_values + exp_values
+    exp_samples <- - scale * log(U[which_shape_near_zero])
+    sample[which_shape_near_zero] <- shift + exp_samples
   }
 
   return(sample)
