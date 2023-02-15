@@ -1,12 +1,12 @@
 Package: quaketools
-Title: What the Package Does (One Line, Title Case)
+Title: Tools for Fitting and Evaluating Earthquake Models
 Version: 0.0.0.9000
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+    person("Zak", "Varty", , "first.last@example.com", role = c("aut", "cre"))
+Description: A collection of tools to make earthquake modelling easier.  
+    Functions are provided to simulate from, estimate and evalute common models 
+    used in statistical seismology.
+License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
