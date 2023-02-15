@@ -28,9 +28,10 @@ from a generalised Pareto distribution using `rgpd()`.
 
 ``` r
 library(quaketools)
+set.seed(4321)
 rgpd(n = 10, scale = 1, shape = 0, shift = 0)
-#>  [1] 0.8388513 3.1086816 0.3117120 0.2506580 0.4272259 2.1590334 0.4967381
-#>  [8] 3.4068405 0.3605082 0.3629492
+#>  [1] 1.09428759 0.09525675 0.88787411 3.12718659 0.26984201 0.28709705
+#>  [7] 0.22320500 0.12244318 0.80088136 0.71840360
 ```
 
 While this is equivalent to using `rexp()`, the seeding is not handled
@@ -55,4 +56,4 @@ qqplot(
 abline(a = 0, b = 1, col = "darkorange")
 ```
 
-<img src="man/figures/README-unnamed-chunk-2-1.png" width="100%" />
+<img src="man/figures/README-rgpd-vs-rexp-1.png" width="100%" />
