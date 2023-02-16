@@ -6,7 +6,7 @@
 \usage{
 dgpd_nu(
   x,
-  scale = 1,
+  scale_alt = 1,
   shape = 0,
   shift = 0,
   shape_tolerance = 1e-10,
@@ -16,7 +16,7 @@ dgpd_nu(
 \arguments{
 \item{x}{Vector of values at which to evaluate the probability density function.}
 
-\item{scale}{Vector of scale parameters, \eqn{\sigma > 0}.}
+\item{scale_alt}{Vector of alternative scale parameters, \eqn{\nu = \sigma * (1 + \xi)}.}
 
 \item{shape}{Vector of shape parameters, \eqn{\xi \in \mathbb{R}}.}
 
@@ -27,8 +27,6 @@ when \code{abs(shape) < shape_tolerance}, values are simulated from the limiting
 exponential distribution.}
 
 \item{log}{Logical; if TRUE then log-density is returned.}
-
-\item{scale_alt}{Vector of alternative scale parameters, \eqn{\nu = \sigma * (1 + \xi)}.}
 }
 \description{
 Functions for working with the generalised Pareto distribution:

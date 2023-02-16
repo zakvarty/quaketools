@@ -17,7 +17,7 @@
 #' dgpd_nu(x = evaluation_points, scale_alt = 1, shape = -0.5)
 #'
 #' @export
-dgpd_nu <- function(x, scale = 1, shape = 0, shift = 0, shape_tolerance = 1e-10, log = FALSE){
+dgpd_nu <- function(x, scale_alt = 1, shape = 0, shift = 0, shape_tolerance = 1e-10, log = FALSE){
 
   # Check that the implied scale value(s) are positive
   scale <- scale_alt / (1 + shape)
