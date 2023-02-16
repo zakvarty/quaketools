@@ -9,32 +9,33 @@ rgpd_nu(n, scale_alt = 1, shape = 0, shift = 0, shape_tolerance = 1e-10)
 \arguments{
 \item{n}{Number of random variates to generate.}
 
-\item{scale_alt}{Vector of alternative scale parameters, nu = sigma * (1 + xi).}
+\item{scale_alt}{Vector of alternative scale parameters, \eqn{\nu = \sigma * (1 + \xi)}.}
 
-\item{shape}{Vector of shape parameters, xi in R.}
+\item{shape}{Vector of shape parameters, \eqn{\xi \in \mathbb{R}}.}
 
-\item{shift}{Vector of threshold parameters, mu in R.}
+\item{shift}{Vector of threshold parameters, \eqn{\mu \in \mathbb{R}}.}
 
-\item{shape_tolerance}{Not intended for standard use. Scalar value, such that when \code{abs(shape) < shape_tolerance}, values are simulated from an exponential distribution.}
+\item{shape_tolerance}{Not intended for standard use. Scalar value, such that
+when \code{abs(shape) < shape_tolerance}, values are simulated from the limiting
+exponential distribution.}
 }
 \value{
 Vector of sampled values from generalised Pareto distribution.
 }
 \description{
-These functions provide information about the generalised Pareto distribution
-using the nu parametrisation. For shape parameters greater than xi > -0.5, nu and xi are
-approximately orthogonal.
+These functions provide information about the generalised Pareto distribution:
 }
 \details{
 \itemize{
-\item \code{dgpd_nu()} gives the probability density function,
-\item \code{pgpd_nu()} gives the cumulative distribution function,
-\item \code{qgpd_nu()} gives the quantile function,
-\item \code{rgpd_nu()} generates random variates.
+\item \code{dgpd()} gives the probability density function,
+\item \code{pgpd()} gives the cumulative distribution function,
+\item \code{qgpd()} gives the quantile function,
+\item \code{rgpd()} generates random variates.
 }
 
-Setting xi < 1e-10 draws from an exponential distribution. This is equivalent
-to \code{rexp()} but the seed is not handled in the same way.
+Any shape values less than \code{shape_tolerance} are drawn from an exponential
+distribution using the inverse CDF method. This is mathematically equivalent
+to using \code{rexp()} but the seed is not handled in the same way.
 }
 \examples{
 rgpd_nu(n = 5, scale_alt = 1, shape = 0, shift = 0, shape_tolerance = 1e-10)

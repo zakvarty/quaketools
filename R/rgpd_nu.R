@@ -1,25 +1,26 @@
 #' The Generalised Pareto Distribution
 #'
-#' These functions provide information about the generalised Pareto distribution
-#' using the nu parametrisation. For shape parameters greater than xi > -0.5, nu and xi are
-#' approximately orthogonal.
+#' These functions provide information about the generalised Pareto distribution:
 #'
-#' * `dgpd_nu()` gives the probability density function,
-#' * `pgpd_nu()` gives the cumulative distribution function,
-#' * `qgpd_nu()` gives the quantile function,
-#' * `rgpd_nu()` generates random variates.
+#' * `dgpd()` gives the probability density function,
+#' * `pgpd()` gives the cumulative distribution function,
+#' * `qgpd()` gives the quantile function,
+#' * `rgpd()` generates random variates.
 #'
 #' @details
-#' Setting xi < 1e-10 draws from an exponential distribution. This is equivalent
-#'  to `rexp()` but the seed is not handled in the same way.
+#' Any shape values less than `shape_tolerance` are drawn from an exponential
+#' distribution using the inverse CDF method. This is mathematically equivalent
+#' to using `rexp()` but the seed is not handled in the same way.
 #'
 #' @author Zak Varty
 #'
 #' @param n Number of random variates to generate.
-#' @param scale_alt Vector of alternative scale parameters, nu = sigma * (1 + xi).
-#' @param shape Vector of shape parameters, xi in R.
-#' @param shift  Vector of threshold parameters, mu in R.
-#' @param shape_tolerance Not intended for standard use. Scalar value, such that when `abs(shape) < shape_tolerance`, values are simulated from an exponential distribution.
+#' @param scale_alt Vector of alternative scale parameters, \eqn{\nu = \sigma * (1 + \xi)}.
+#' @param shape Vector of shape parameters, \eqn{\xi \in \mathbb{R}}.
+#' @param shift  Vector of threshold parameters, \eqn{\mu \in \mathbb{R}}.
+#' @param shape_tolerance Not intended for standard use. Scalar value, such that
+#'  when `abs(shape) < shape_tolerance`, values are simulated from the limiting
+#'  exponential distribution.
 #' @return Vector of sampled values from generalised Pareto distribution.
 #'
 #' @examples

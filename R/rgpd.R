@@ -8,20 +8,23 @@
 #' * `rgpd()` generates random variates.
 #'
 #' @details
-#' Setting xi < 1e-10 draws from an exponential distribution. This is equivalent
-#'  to `rexp()` but the seed is not handled in the same way.
+#' Any shape values less than `shape_tolerance` are drawn from an exponential
+#' distribution using the inverse CDF method. This is mathematically equivalent
+#' to using `rexp()` but the seed is not handled in the same way.
 #'
 #' @author Zak Varty
 #'
 #' @param n 	Number of random variates to generate.
-#' @param scale Vector of scale parameters, sigma > 0.
-#' @param shape Vector of shape parameters, xi in R.
-#' @param shift  Vector of threshold parameters, mu in R.
-#' @param shape_tolerance Not intended for standard use. Scalar value, such that when `abs(shape) <= shape_tolerance`, values are simulated from an exponential distribution.
+#' @param scale Vector of scale parameters, \eqn{\sigma > 0}.
+#' @param shape Vector of shape parameters, \eqn{\xi \in \mathbb{R}}.
+#' @param shift  Vector of threshold parameters, \eqn{\mu \in \mathbb{R}}.
+#' @param shape_tolerance Not intended for standard use. Scalar value, such that
+#'  when `abs(shape) < shape_tolerance`, values are simulated from the limiting
+#'  exponential distribution.
 #' @return Vector of sampled values from generalised Pareto distribution.
 #'
 #' @examples
-#' rgpd(n = 5, scale = 1, shape = 0, shift = 0, shape_tolerance = 1e-10)
+#' rgpd(n = 5, scale = 1, shape = 0, shift = 0)
 #'
 #' rgpd(n = 5, scale = 1:5, shape = 0.1, shift = 0)
 #' rgpd(n = 5, scale = 1, shape = 0.1 * 1:5, shift = 0)
