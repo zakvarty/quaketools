@@ -28,7 +28,7 @@
 #' rgpd(n = 5, scale = 1, shape = 0, shift = 1:5)
 #'
 #' @export
-rgpd <- function(n, scale = 1, shape = 0, shift = 0){
+rgpd <- function(n, scale = 1, shape = 0, shift = 0, shape_tolerance = 1e-10){
 
   # Check that scale value(s) are positive
   stopifnot(exprs = {

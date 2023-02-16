@@ -4,7 +4,7 @@
 \alias{rgpd}
 \title{The Generalised Pareto Distribution}
 \usage{
-rgpd(n, scale = 1, shape = 0, shift = 0)
+rgpd(n, scale = 1, shape = 0, shift = 0, shape_tolerance = 1e-10)
 }
 \arguments{
 \item{n}{Number of random variates to generate.}

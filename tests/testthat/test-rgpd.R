@@ -6,4 +6,3 @@ test_that("setting the seed works", {
   expect_equal(gpd_sample_1, gpd_sample_2)
 })
 
-ismev:::gpd
