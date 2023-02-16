@@ -19,27 +19,22 @@ rgpd_nu(n, scale_alt = 1, shape = 0, shift = 0, shape_tolerance = 1e-10)
 when \code{abs(shape) < shape_tolerance}, values are simulated from the limiting
 exponential distribution.}
 }
-\value{
-Vector of sampled values from generalised Pareto distribution.
-}
 \description{
 These functions provide information about the generalised Pareto distribution:
-}
-\details{
 \itemize{
 \item \code{dgpd()} gives the probability density function,
 \item \code{pgpd()} gives the cumulative distribution function,
 \item \code{qgpd()} gives the quantile function,
 \item \code{rgpd()} generates random variates.
 }
-
+}
+\details{
 Any shape values less than \code{shape_tolerance} are drawn from an exponential
 distribution using the inverse CDF method. This is mathematically equivalent
 to using \code{rexp()} but the seed is not handled in the same way.
 }
 \examples{
-rgpd_nu(n = 5, scale_alt = 1, shape = 0, shift = 0, shape_tolerance = 1e-10)
-
+rgpd_nu(n = 5, scale_alt = 1, shape = 0, shift = 0)
 rgpd_nu(n = 5, scale_alt = 1:5, shape = 0.1, shift = 0)
 rgpd_nu(n = 5, scale_alt = 1, shape = 0.1 * 1:5, shift = 0)
 rgpd_nu(n = 5, scale_alt = 1, shape = 0, shift = 1:5)

@@ -24,22 +24,20 @@ Vector of sampled values from generalised Pareto distribution.
 }
 \description{
 These functions provide information about the generalised Pareto distribution:
-}
-\details{
 \itemize{
 \item \code{dgpd()} gives the probability density function,
 \item \code{pgpd()} gives the cumulative distribution function,
 \item \code{qgpd()} gives the quantile function,
 \item \code{rgpd()} generates random variates.
 }
-
+}
+\details{
 Any shape values less than \code{shape_tolerance} are drawn from an exponential
 distribution using the inverse CDF method. This is mathematically equivalent
 to using \code{rexp()} but the seed is not handled in the same way.
 }
 \examples{
 rgpd(n = 5, scale = 1, shape = 0, shift = 0)
-
 rgpd(n = 5, scale = 1:5, shape = 0.1, shift = 0)
 rgpd(n = 5, scale = 1, shape = 0.1 * 1:5, shift = 0)
 rgpd(n = 5, scale = 1, shape = 0, shift = 1:5)

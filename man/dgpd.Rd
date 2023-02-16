@@ -17,26 +17,25 @@ dgpd(x, scale, shape, shift = 0, shape_tolerance = 1e-10, log = FALSE)
 
 \item{shape_tolerance}{Not intended for standard use. Scalar value, such that
 when \code{abs(shape) < shape_tolerance}, values are simulated from the limiting
-exponential distribution.
-@param log Logical; if TRUE then log-density is returned.}
+exponential distribution.}
+
+\item{log}{Logical; if TRUE then log-density is returned.}
 }
 \value{
 Vector of probability density function values at \code{x}.
 }
 \description{
 These functions provide information about the generalised Pareto distribution:
-}
-\details{
 \itemize{
 \item \code{dgpd()} gives the probability density function,
 \item \code{pgpd()} gives the cumulative distribution function,
 \item \code{qgpd()} gives the quantile function,
 \item \code{rgpd()} generates random variates.
 }
-
-Any shape values less than \code{shape_tolerance} are drawn from an exponential
-distribution using the inverse CDF method. This is mathematically equivalent
-to using \code{rexp()} but the seed is not handled in the same way.
+}
+\details{
+Any shape values less than \code{shape_tolerance} are calculated for an exponential
+distribution using \code{dexp()}.
 }
 \examples{
 evaluation_points <- c(-1, 0, 0.5, 1, 1.9, 2.1, 5)

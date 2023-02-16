@@ -1,6 +1,6 @@
-#' The Generalised Pareto Distribution
+#' @title The Generalised Pareto Distribution
 #'
-#' These functions provide information about the generalised Pareto distribution:
+#' @description These functions provide information about the generalised Pareto distribution:
 #'
 #' * `dgpd()` gives the probability density function,
 #' * `pgpd()` gives the cumulative distribution function,
@@ -25,7 +25,6 @@
 #'
 #' @examples
 #' rgpd(n = 5, scale = 1, shape = 0, shift = 0)
-#'
 #' rgpd(n = 5, scale = 1:5, shape = 0.1, shift = 0)
 #' rgpd(n = 5, scale = 1, shape = 0.1 * 1:5, shift = 0)
 #' rgpd(n = 5, scale = 1, shape = 0, shift = 1:5)
