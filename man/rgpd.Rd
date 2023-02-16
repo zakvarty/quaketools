@@ -23,13 +23,19 @@ exponential distribution.}
 Vector of sampled values from generalised Pareto distribution.
 }
 \description{
-These functions provide information about the generalised Pareto distribution:
+Functions for working with the generalised Pareto distribution:
 \itemize{
 \item \code{dgpd()} gives the probability density function,
 \item \code{pgpd()} gives the cumulative distribution function,
 \item \code{qgpd()} gives the quantile function,
 \item \code{rgpd()} generates random variates.
 }
+
+The above functions use the \eqn{(\sigma,\xi)} parametrisation of the
+generalised Pareto distribution.
+
+Append "\verb{_nu}" to the function name to use the \eqn{(\nu,\xi)} parametrisation
+instead, e.g. \code{dgpd_nu()}.
 }
 \details{
 Any shape values less than \code{shape_tolerance} are drawn from an exponential

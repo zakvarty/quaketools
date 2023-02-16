@@ -18,9 +18,10 @@
 #' dgpd(x = evaluation_points, scale = 1, shape = -0.5)
 #'
 #' @export
-dgpd <- function(x, scale, shape, shift = 0, shape_tolerance = 1e-10, log = FALSE){
+dgpd <- function(x, scale = 1, shape = 0, shift = 0, shape_tolerance = 1e-10, log = FALSE){
 
   # Check inputs
+  n <- length(x)
   stopifnot(exprs = {
     all(scale > 0)
     length(scale) %in% c(1,n)
@@ -39,10 +40,11 @@ dgpd <- function(x, scale, shape, shift = 0, shape_tolerance = 1e-10, log = FALS
   if ((length(shift) == 1) & (n > 1)) { shift <- rep(shift, n) }
 
   # Calculate the GPD (log-)density at each point in x
-  ifelse(log,
-    yes = -log(scale) + ((-1 / shape) - 1) * log(pmax((1 + shape * (x - shift) / scale), 0)),
-    no = (scale ^ (-1)) * pmax((1 + shape * (x - shift) / scale), 0) ^ ((-1 / shape) - 1)
-  )
+  if (log) {
+    out <- -log(scale) + ((-1 / shape) - 1) * log(pmax((1 + shape * (x - shift) / scale), 0))
+  } else {
+    out <- (scale ^ (-1)) * pmax((1 + shape * (x - shift) / scale), 0) ^ ((-1 / shape) - 1)
+  }
 
   # Amend values below threshold
   out_of_support_value <- ifelse(log, yes = -Inf, no = 0)
