@@ -14,6 +14,8 @@ rgpd(n, scale = 1, shape = 0, shift = 0)
 \item{shape}{Vector of shape parameters, xi in R.}
 
 \item{shift}{Vector of threshold parameters, mu in R.}
+
+\item{shape_tolerance}{Not intended for standard use. Scalar value, such that when \code{abs(shape) < shape_tolerance}, values are simulated from an exponential distribution.}
 }
 \value{
 Vector of sampled values from generalised Pareto distribution.
@@ -22,16 +24,18 @@ Vector of sampled values from generalised Pareto distribution.
 These functions provide information about the generalised Pareto distribution:
 }
 \details{
-\code{dgpd} gives the density,
-\code{pgpd} gives the distribution function,
-\code{qgpd} gives the quantile function,
-\code{rgpd} generates random variates.
+\itemize{
+\item \code{dgpd()} gives the probability density function,
+\item \code{pgpd()} gives the cumulative distribution function,
+\item \code{qgpd()} gives the quantile function,
+\item \code{rgpd()} generates random variates.
 }
-\note{
-Setting xi < 1e-10 draws from an exponential distribution. This is equivalent to \code{rexp()} but the seed is not handled in the same way.
+
+Setting xi < 1e-10 draws from an exponential distribution. This is equivalent
+to \code{rexp()} but the seed is not handled in the same way.
 }
 \examples{
-rgpd(n = 5, scale = 1, shape = 0, shift = 0)
+rgpd(n = 5, scale = 1, shape = 0, shift = 0, shape_tolerance = 1e-10)
 
 rgpd(n = 5, scale = 1:5, shape = 0.1, shift = 0)
 rgpd(n = 5, scale = 1, shape = 0.1 * 1:5, shift = 0)
