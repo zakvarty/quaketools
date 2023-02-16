@@ -15,7 +15,7 @@ rgpd(n, scale = 1, shape = 0, shift = 0, shape_tolerance = 1e-10)
 
 \item{shift}{Vector of threshold parameters, mu in R.}
 
-\item{shape_tolerance}{Not intended for standard use. Scalar value, such that when \code{abs(shape) < shape_tolerance}, values are simulated from an exponential distribution.}
+\item{shape_tolerance}{Not intended for standard use. Scalar value, such that when \code{abs(shape) <= shape_tolerance}, values are simulated from an exponential distribution.}
 }
 \value{
 Vector of sampled values from generalised Pareto distribution.

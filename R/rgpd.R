@@ -17,7 +17,7 @@
 #' @param scale Vector of scale parameters, sigma > 0.
 #' @param shape Vector of shape parameters, xi in R.
 #' @param shift  Vector of threshold parameters, mu in R.
-#' @param shape_tolerance Not intended for standard use. Scalar value, such that when `abs(shape) < shape_tolerance`, values are simulated from an exponential distribution.
+#' @param shape_tolerance Not intended for standard use. Scalar value, such that when `abs(shape) <= shape_tolerance`, values are simulated from an exponential distribution.
 #' @return Vector of sampled values from generalised Pareto distribution.
 #'
 #' @examples
@@ -30,12 +30,14 @@
 #' @export
 rgpd <- function(n, scale = 1, shape = 0, shift = 0, shape_tolerance = 1e-10){
 
-  # Check that scale value(s) are positive
+  # Check inputs
   stopifnot(exprs = {
-    all(scale >= 0)
+    all(scale > 0)
     length(scale) %in% c(1,n)
     length(shape) %in% c(1,n)
     length(shift) %in% c(1,n)
+    length(shape_tolerance) == 1
+    shape_tolerance >= 0
   })
 
   # Ensure scale, shape and shift are of same length.
@@ -48,7 +50,7 @@ rgpd <- function(n, scale = 1, shape = 0, shift = 0, shape_tolerance = 1e-10){
   sample <- shift + (scale / shape) * ((1 - U)^(-shape) - 1)
 
   # Check for and correct any values from exponential distribution (xi ≈ 0)
-  which_shape_near_zero <- which(abs(shape) < shape_tolerance)
+  which_shape_near_zero <- which(abs(shape) <= shape_tolerance)
   n_shape_near_zero <- length(which_shape_near_zero)
 
   if (n_shape_near_zero > 0) {
