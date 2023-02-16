@@ -2,10 +2,10 @@
 #'
 #' These functions provide information about the generalised Pareto distribution:
 #'
-#' * `dgpd()` gives the probability density function,
-#' * `pgpd()` gives the cumulative distribution function,
-#' * `qgpd()` gives the quantile function,
-#' * `rgpd()` generates random variates.
+#' * `dgpd_nu()` gives the probability density function,
+#' * `pgpd_nu()` gives the cumulative distribution function,
+#' * `qgpd_nu()` gives the quantile function,
+#' * `rgpd_nu()` generates random variates.
 #'
 #' @details
 #' Any shape values less than `shape_tolerance` are drawn from an exponential
