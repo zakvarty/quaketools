@@ -21,9 +21,11 @@
 dgpd <- function(x, scale = 1, shape = 0, shift = 0, shape_tolerance = 1e-10, log = FALSE){
 
   # Check inputs
-  n <- length(x)
+  input_lengths <- c(length(x), length(scale), length(shape), length(shift))
+  n <- max(input_lengths)
   stopifnot(exprs = {
     all(scale > 0)
+    length(x) %in% c(1,n)
     length(scale) %in% c(1,n)
     length(shape) %in% c(1,n)
     length(shift) %in% c(1,n)
@@ -34,10 +36,10 @@ dgpd <- function(x, scale = 1, shape = 0, shift = 0, shape_tolerance = 1e-10, lo
   })
 
   # Ensure x, scale, shape and mu are of same length.
-  # Ensure scale, shape and shift are of same length.
   if ((length(scale) == 1) & (n > 1)) { scale <- rep(scale, n) }
   if ((length(shape) == 1) & (n > 1)) { shape <- rep(shape, n) }
   if ((length(shift) == 1) & (n > 1)) { shift <- rep(shift, n) }
+  if ((length(x) == 1) & (n > 1)) { x <- rep(x, n) }
 
   # Calculate the GPD (log-)density at each point in x
   if (log) {

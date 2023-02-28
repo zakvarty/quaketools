@@ -2,5 +2,8 @@
 
 export(dgpd)
 export(dgpd_nu)
+export(pgpd)
+export(pgpd_nu)
 export(rgpd)
 export(rgpd_nu)
+importFrom(stats,pexp)
